@@ -30,6 +30,5 @@ export default {
     animate,
     radix,
     daisyui,
-
   ],
 } satisfies Config;
