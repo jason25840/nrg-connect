@@ -1,34 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import Image from "next/image";
 
 const Welcome = ({ onEnter }) => {
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const [logoPosition, setLogoPosition] = useState({ x: "50%", y: "50%" });
   const [isVisible, setIsVisible] = useState(true);
-
-  // Handle mouse movement
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX, clientY, target } = e;
-      const { offsetWidth, offsetHeight } = target;
-
-      // Calculate movement towards the mouse pointer
-      const newX = ((clientX / offsetWidth) * 40 - 20).toFixed(2); // -20 to 20 range
-      const newY = ((clientY / offsetHeight) * 40 - 20).toFixed(2); // -20 to 20 range
-      setLogoPosition({
-        x: `${50 + parseFloat(newX)}%`,
-        y: `${50 + parseFloat(newY)}%`,
-      });
-    };
-
-    // Only add the mousemove listener if on desktop (not mobile)
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   // Handle click to enter
   const handleClick = () => {
@@ -43,28 +20,24 @@ const Welcome = ({ onEnter }) => {
     isVisible && (
       <div
         onClick={handleClick}
-        className={`fixed inset-0 flex items-center justify-center bg-black text-white transition-opacity duration-1000 ${
+        className={`fixed inset-0 flex flex-col items-center justify-center bg-black text-white transition-opacity duration-1000 ${
           isFadingOut ? "opacity-0" : "opacity-100"
         }`}
       >
-        {/* Logo with slight movement towards the cursor */}
-        <div
-          className="absolute transition-transform duration-500 ease-out"
-          style={{
-            left: logoPosition.x,
-            top: logoPosition.y,
-            transform: `translate(-50%, -50%)`,
-          }}
-        >
+        {/* Logo */}
+        <div className="w-[400px] h-[400px] relative">
           <Image
-            src="/assets/images/nrg-connect-logo.svg" // Use path relative to the `public` directory
+            src="/assets/images/NRGLogo.svg"
             alt="Site Logo"
-            width={400} // Specify width in pixels
-            height={400} // Specify height in pixels
-            className="w-24 h-24"
+            layout="fill"
+            objectFit="contain"
           />
-          <p className="text-center mt-4 text-lg">Click anywhere to enter</p>
         </div>
+
+        {/* Text */}
+        <p className="text-center mt-4 text-sm animate-pulse">
+          Click to Enter and Connect
+        </p>
       </div>
     )
   );
