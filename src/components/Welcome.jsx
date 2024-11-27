@@ -20,19 +20,19 @@ const Welcome = ({ onEnter }) => {
     isVisible && (
       <div
         onClick={handleClick}
-        className={`fixed inset-0 flex flex-col items-center justify-center bg-black text-white transition-opacity duration-1000 ${
+        className={`fixed inset-0 flex flex-col items-center justify-center bg-sky-700 text-white transition-opacity duration-1000 ${
           isFadingOut ? "opacity-0" : "opacity-100"
         }`}
       >
         {/* Logo */}
-        <div className="w-[400px] h-[400px] relative">
-          <Image
-            src="/assets/images/NRGLogo.svg"
-            alt="Site Logo"
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
+        <Image
+          src="/assets/images/NRGLogo.svg"
+          alt="Site Logo"
+          width={400}
+          height={400}
+          priority
+          style={{ objectFit: "contain" }}
+        />
 
         {/* Text */}
         <p className="text-center mt-4 text-sm animate-pulse">

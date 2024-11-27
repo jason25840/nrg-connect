@@ -3,7 +3,7 @@ import { Vortex } from "./ui/Vortex";
 
 const HomeContent = () => {
   return (
-    <div className="relative flex items-center justify-center h-screen bg-black text-white">
+    <div className="relative flex items-center justify-center h-screen bg-sky-950 text-white">
       {/* Background Vortex */}
       <div className="absolute inset-0 z-0">
         <Vortex particleCount={1000} />

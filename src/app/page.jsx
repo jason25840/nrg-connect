@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Welcome from "../components/Welcome"; // Adjust path as needed
-import HomeContent from "../components/HomeContent"; // Or import your other main page content
+//import HomeContent from "../components/HomeContent";
+import HomePage from "../components/HomePage";
 
 export default function Page() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -12,8 +13,6 @@ export default function Page() {
   };
 
   return (
-    <div>
-      {showWelcome ? <Welcome onEnter={handleEnter} /> : <HomeContent />}
-    </div>
+    <div>{showWelcome ? <Welcome onEnter={handleEnter} /> : <HomePage />}</div>
   );
 }
