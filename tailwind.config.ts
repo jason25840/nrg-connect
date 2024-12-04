@@ -19,6 +19,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        customDark: '#2a2d3e',
+        customLight: '#fefefe',
+        customGray: '#adadaf',
+        customBlue: '#32b1f4',
+        customGreen: '#63fcfa',
+        customYellow: '#fef33f',
       },
     },
   },

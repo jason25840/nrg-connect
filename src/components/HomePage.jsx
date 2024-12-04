@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import ModalWithForm from "./ModalWithForm";
 //import HomeContent from "./HomeContent";
 
 function HomePage() {
@@ -15,6 +16,10 @@ function HomePage() {
     >
       <Header />
       {/*<HomeContent />*/}
+      <div className="flex items-center justify-center gap-20 mb-40">
+        <ModalWithForm />
+        <ModalWithForm />
+      </div>
     </div>
   );
 }

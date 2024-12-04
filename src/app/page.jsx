@@ -12,6 +12,10 @@ export default function Page() {
     setShowWelcome(false);
   };
 
+  const handleActiveModalClose = () => {
+    setActiveModal("");
+  };
+
   return (
     <div>{showWelcome ? <Welcome onEnter={handleEnter} /> : <HomePage />}</div>
   );
