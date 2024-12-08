@@ -30,14 +30,29 @@ const Welcome = ({ onEnter }) => {
         </div>
         {/* Logo */}
         <div className='relative inset-0 z-10'>
-          <Image
+          <div className='relative w-[400px] h-[400px]'>
+            <Image
+              src='./assets/images/NRGConnectLogo.svg'
+              alt='Site Logo'
+              fill
+              priority
+              style={{ objectFit: 'contain' }}
+            />
+            <p
+              className='absolute inset-0 flex items-center justify-center text-customGray text-3xl font-bold
+              animate-ping'
+            >
+              CONNECT
+            </p>
+          </div>
+          {/*<Image
             src='./assets/images/NRGConnectLogo.svg'
             alt='Site Logo'
             width={400}
             height={400}
             priority
             style={{ objectFit: 'contain' }}
-          />
+          />*/}
 
           {/* Text */}
           <p className='text-center mt-4 text-sm animate-pulse'>

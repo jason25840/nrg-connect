@@ -7,7 +7,7 @@ export const BackgroundLines = ({ children, className, svgOptions }) => {
   return (
     <div
       className={cn(
-        'h-[20rem] md:h-screen w-full bg-white dark:bg-customDark',
+        'h-[20rem] md:h-screen w-full dark:bg-customDark',
         className
       )}
     >
