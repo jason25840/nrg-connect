@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import Header from './Header';
-import ModalWithForm from './ModalWithForm';
+import ModalWithForm from './modals/ModalWithForm';
+import SignInForm from './forms/SignInForm';
+import SignUpForm from './forms/SignUpForm';
 
 function HomePage() {
   const [activeForm, setActiveForm] = useState('');
 
-  const handleShowForm = (formType) => {
-    setActiveForm(formType);
+  const handleActiveModalClose = () => setActiveForm('');
+
+  const handleFormSubmit = (formData, formType) => {
+    console.log(`${formType} Form Submitted:`, formData);
+    handleActiveModalClose();
   };
 
   return (
@@ -19,32 +24,44 @@ function HomePage() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Header */}
       <Header />
 
-      {/* Main Section */}
       <div className='flex flex-col items-center justify-center gap-10 mb-40'>
         <button
-          onClick={() => handleShowForm('signin')}
-          className='text-3xl font-bold px-8 py-4 bg-blue-600 hover:bg-blue-800 rounded-lg shadow-lg'
+          onClick={() => setActiveForm('signin')}
+          className='text-customDark bg-gradient-to-r from-customBlue to-customYellow py-5 px-10 border-solid border-2 rounded-full hover:border-x-customDark'
         >
           Sign In
         </button>
 
         <button
-          onClick={() => handleShowForm('signup')}
-          className='text-3xl font-bold px-8 py-4 bg-green-600 hover:bg-green-800 rounded-lg shadow-lg'
+          onClick={() => setActiveForm('signup')}
+          className='text-customDark bg-gradient-to-r from-customBlue to-customYellow py-5 px-10 border-solid border-2 rounded-full hover:border-x-customDark'
         >
           Sign Up
         </button>
       </div>
 
-      {/* Modal Pop-up */}
-      {activeForm && (
+      {activeForm === 'signin' && (
         <ModalWithForm
-          formType={activeForm}
-          closeForm={() => setActiveForm('')}
-        />
+          title='Sign In'
+          isOpen={!!activeForm}
+          handleActiveModalClose={handleActiveModalClose}
+          onSubmit={handleFormSubmit}
+        >
+          <SignInForm />
+        </ModalWithForm>
+      )}
+
+      {activeForm === 'signup' && (
+        <ModalWithForm
+          title='Sign Up'
+          isOpen={!!activeForm}
+          handleActiveModalClose={handleActiveModalClose}
+          onSubmit={handleFormSubmit}
+        >
+          <SignUpForm />
+        </ModalWithForm>
       )}
     </div>
   );
