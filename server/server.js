@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import usersRoute from './routes/api/users.js';
 
 // Config
 dotenv.config();
@@ -14,6 +15,8 @@ app.use(cors());
 
 // Basic Route
 app.get('/', (req, res) => res.send('Backend API Running'));
+
+app.use('/api/users', usersRoute);
 
 // MongoDB Connection
 mongoose

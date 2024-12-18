@@ -1,0 +1,70 @@
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { register } from '../../actions/auth';
+import { setAlert } from '../../actions/alert';
+
+function SignUpForm({ register, setAlert }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
+  });
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.password2) {
+      setAlert('Passwords do not match', 'danger');
+    } else {
+      register(formData);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className='space-y-5'>
+      <input
+        className='w-full h-12 border border-gray-400 px-4 rounded-lg'
+        placeholder='Name'
+        name='name'
+        type='text'
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <input
+        className='w-full h-12 border border-gray-400 px-4 rounded-lg'
+        placeholder='Email'
+        name='email'
+        type='email'
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <input
+        className='w-full h-12 border border-gray-400 px-4 rounded-lg'
+        placeholder='Password'
+        name='password'
+        type='password'
+        value={formData.password}
+        onChange={handleChange}
+      />
+      <input
+        className='w-full h-12 border border-gray-400 px-4 rounded-lg'
+        placeholder='Confirm Password'
+        name='password2'
+        type='password'
+        value={formData.password2}
+        onChange={handleChange}
+      />
+      <button
+        className='w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg'
+        type='submit'
+      >
+        Sign Up
+      </button>
+    </form>
+  );
+}
+
+export default connect(null, { register, setAlert })(SignUpForm);
