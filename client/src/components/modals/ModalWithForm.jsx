@@ -21,6 +21,15 @@ function ModalWithForm({ title, handleActiveModalClose, onSubmit, children }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [handleActiveModalClose]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.password2) {
+      setAlert('Passwords do not match', 'danger');
+    } else {
+      register(formData);
+    }
+  };
+
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-70'>
       <div className='relative'>
@@ -31,7 +40,7 @@ function ModalWithForm({ title, handleActiveModalClose, onSubmit, children }) {
         <div className='bg-white text-gray-800 p-8 rounded-lg shadow-2xl w-96 relative z-10'>
           <h2 className='text-center text-3xl font-bold mb-8'>{title}</h2>
 
-          <form className='space-y-5' onSubmit={onSubmit} ref={modalRef}>
+          <form className='space-y-5' onSubmit={handleSubmit} ref={modalRef}>
             {children}
             <button
               className='w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg'

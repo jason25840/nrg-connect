@@ -14,17 +14,8 @@ function SignUpForm({ register, setAlert }) {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.password2) {
-      setAlert('Passwords do not match', 'danger');
-    } else {
-      register(formData);
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit} className='space-y-5'>
+    <>
       <input
         className='w-full h-12 border border-gray-400 px-4 rounded-lg'
         placeholder='Name'
@@ -57,13 +48,7 @@ function SignUpForm({ register, setAlert }) {
         value={formData.password2}
         onChange={handleChange}
       />
-      <button
-        className='w-full h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg'
-        type='submit'
-      >
-        Sign Up
-      </button>
-    </form>
+    </>
   );
 }
 

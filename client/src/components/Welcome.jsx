@@ -40,7 +40,7 @@ const Welcome = ({ onEnter }) => {
             />
             <p
               className='absolute inset-0 flex items-center justify-center text-customGray text-3xl font-bold
-              animate-ping'
+              animate-ping duration-[20s]'
             >
               CONNECT
             </p>
